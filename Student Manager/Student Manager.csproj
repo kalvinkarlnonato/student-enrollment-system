@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
@@ -10,13 +10,24 @@
     <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
-	  <!-- Win UI None Packaged Self Contained Sample App -->
-	  <WindowsPackagedType>None</WindowsPackagedType>
-	  <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
-	  <!-- END Win UI None Packaged Self Contained Sample App -->
+	<!-- Win UI None Packaged Self Contained Sample App -->
+	<WindowsPackagedType>None</WindowsPackagedType>
+	<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+	<!-- END Win UI None Packaged Self Contained Sample App -->
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Views\DashboardView.xaml" />
+    <None Remove="Views\EnlistmentView.xaml" />
+    <None Remove="Views\LoginView.xaml" />
+    <None Remove="Views\Students\AddStudentView.xaml" />
+    <None Remove="Views\StudentView.xaml" />
+    <None Remove="Views\Subjects\AddSubjectView.xaml" />
+    <None Remove="Views\SubjectView.xaml" />
+  </ItemGroup>
 
   <ItemGroup>
+	<Content Include="Assets\csu.gif" />
+	<Content Include="Assets\csu-icon.gif" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
@@ -27,6 +38,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.230913002" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.755" />
     <Manifest Include="$(ApplicationManifest)" />
@@ -38,7 +51,42 @@
     package has not yet been restored.
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
-    <ProjectCapability Include="Msix"/>
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\EnlistmentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\SubjectView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\StudentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\LoginView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\DashboardView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Students\AddStudentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Subjects\AddSubjectView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <!-- 
